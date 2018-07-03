@@ -1,0 +1,11 @@
+/Users/annishlai/Projects/HW/HW/bin/Debug/HW.dll
+/Users/annishlai/Projects/HW/HW/bin/Debug/HW.pdb
+/Users/annishlai/Projects/HW/HW/bin/Debug/nunit.framework.dll
+/Users/annishlai/Projects/HW/HW/bin/Debug/Zenject-tests.dll
+/Users/annishlai/Projects/HW/HW/bin/Debug/Zenject.dll
+/Users/annishlai/Projects/HW/HW/bin/Debug/nunit.framework.pdb
+/Users/annishlai/Projects/HW/HW/bin/Debug/nunit.framework.xml
+/Users/annishlai/Projects/HW/HW/obj/Debug/HW.csprojResolveAssemblyReference.cache
+/Users/annishlai/Projects/HW/HW/obj/Debug/HW.csproj.CoreCompileInputs.cache
+/Users/annishlai/Projects/HW/HW/obj/Debug/HW.dll
+/Users/annishlai/Projects/HW/HW/obj/Debug/HW.pdb
