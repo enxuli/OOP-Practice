@@ -5,11 +5,15 @@ namespace HW2.DI
 {
     public class DoorDI : IDoorDI
     {
-        [Inject]
         protected IKnobDI _knob;
 
         public DoorDI()
         {
+        }
+
+        public void InstallKnob(IKnobDI knob)
+        {
+            _knob = knob;
         }
 
         public IKnobDI Knob

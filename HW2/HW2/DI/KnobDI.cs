@@ -20,5 +20,10 @@ namespace HW2.DI
             }
 
         }
+
+        public bool PwdOpen(string pwd)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

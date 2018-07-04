@@ -6,13 +6,21 @@ namespace HW2.UnitTesting
     [TestFixture]
     public class TesterNonDI
     {
+        string _pwd = "12345";
+
         Key _key;
 
         House _house;
 
-        Door _doorOnHouse;
+        House _houseNew;
 
-        Knob _knobOnDoor;
+        Door _door;
+
+        Door _doorNew;
+
+        Knob _knob;
+
+        KnobPwd _knobPwd;
 
         Keyhold _keyholdOnKnod;
 
@@ -31,45 +39,52 @@ namespace HW2.UnitTesting
         public void CheckDoor()
         {
             _house = new House();
-            _doorOnHouse = _house.InstallDoor();
-            Door _doorNew = new Door();
+            _houseNew = new House();
 
-            Assert.AreSame(_doorOnHouse, _house.Door);
-            Assert.AreNotSame(_doorOnHouse, _doorNew);
+            _door = _house.InstallDoor();
+            _doorNew = _houseNew.InstallDoor();
+
+            Assert.AreNotSame(_door, _doorNew);
         }
 
         [Test]
         public void CheckKnob()
         {
-            //_knobOnDoor = _doorOnHouse.IntsallKnob();
-            //Knob _knobNew = new Knob();
+            _knob = new Knob();
+            _knobPwd = new KnobPwd();
+            _door.IntsallKnob(_knob);
+            _door.IntsallKnob(_knobPwd);
+            Assert.AreSame(_knob, _house.Door.Knob);
+            Assert.AreSame(_knobPwd, _house.Door.KnobPwd);
+            _keyholdOnKnod = _knob.InstallKeyhold();
+            Assert.AreSame(_keyholdOnKnod, _house.Door.Knob.Keyhold);
 
-            //Assert.AreSame(_knobOnDoor, _doorOnHouse.Knob);
-            //Assert.AreNotSame(_knobOnDoor, _knobNew);
+            _keyholdOnKnod.Index = 1;
 
+            Boolean _isOpened = _keyholdOnKnod.TurnandOpen(_key);
+            Assert.True(_isOpened);
+        }
 
+        [Test]
+        public void CheckKnobPwd()
+        {
+            _knobPwd.Pwd = "12345";
+            Boolean _isPwdOpened = _knobPwd.PwdOpen(_pwd);
+            Assert.True(_isPwdOpened);
 
         }
 
         [Test]
         public void CheckKeyhold()
         {
-            _knobOnDoor = _doorOnHouse.IntsallKnob();
-            Knob _knobNew = new Knob();
 
-            Assert.AreSame(_knobOnDoor, _doorOnHouse.Knob);
-            Assert.AreNotSame(_knobOnDoor, _knobNew);
+            //_keyholdOnKnod = _knob.InstallKeyhold();
+            //Assert.AreSame(_keyholdOnKnod, _house.Door.Knob.Keyhold);// there was bugs here
 
-            _keyholdOnKnod = _knobOnDoor.InstallKeyhold();
-            Keyhold _keyholdNew = new Keyhold();
-
-            Assert.AreSame(_keyholdOnKnod, _house.Door.Knob.Keyhold);
-            Assert.AreNotSame(_keyholdOnKnod, _keyholdNew);
-
-            _keyholdOnKnod.Index = 1;
+            //_keyholdOnKnod.Index = 1;
             
-            Boolean _isOpened = _keyholdOnKnod.TurnandOpen(_key);
-            Assert.True(_isOpened);
+            //Boolean _isOpened = _keyholdOnKnod.TurnandOpen(_key);
+            //Assert.True(_isOpened);
         }
 
     }

@@ -61,6 +61,8 @@
     <Compile Include="DI\IKnobDI.cs" />
     <Compile Include="IKeyDI.cs" />
     <Compile Include="KeyDI.cs" />
+    <Compile Include="DI\KnobPwdDI.cs" />
+    <Compile Include="Non-DI\KnobPwd.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -10,28 +10,21 @@ namespace HW2.UnitTesting
     {
         public override void Bind()
         {
-            
-            Container.Bind<KeyDI>().AsSingle();
-            Container.Bind<HouseDI>().AsSingle();
-            Container.Bind<DoorDI>().AsSingle();
-            Container.Bind<KnobDI>().AsSingle();
-            Container.Bind<KeyholdDI>().AsSingle();
 
+            Container.Bind<IDoorDI>().To<DoorDI>().AsTransient().WhenInjectedInto<HouseDI>();
 
             ContainerBindInterfaceTo<IKeyDI, KeyDI>(true);
-            ContainerBindInterfaceTo<IHouseDI, HouseDI>(true);
+            ContainerBindInterfaceTo<IHouseDI, HouseDI>(false);
+            ContainerBindInterfaceTo<IKeyholdDI, KeyholdDI>(true);
 
-            Container.Bind<IDoorDI>().WithId("newDoor").To<DoorDI>().AsTransient();
-            Container.Bind<IKnobDI>().WithId("newKnob").To<KnobDI>().AsTransient();
-            Container.Bind<IKeyholdDI>().WithId("newKeyhold").To<KeyholdDI>().AsTransient();
-
-            Container.Bind<IDoorDI>().To<DoorDI>().AsSingle();
-            Container.Bind<IKnobDI>().To<KnobDI>().AsSingle();
-            Container.Bind<IKeyholdDI>().To<KeyholdDI>().AsSingle();   
+            Container.Bind<IKnobDI>().WithId("Knob").To<KnobDI>().AsTransient();
+            Container.Bind<IKnobDI>().WithId("KnobWithPwd").To<KnobPwdDI>().AsTransient();
 
             Container.Bind<int>().FromInstance(1).WhenInjectedInto<KeyDI>();
             Container.Bind<int>().FromInstance(1).WhenInjectedInto<KeyholdDI>();
+            Container.Bind<string>().FromInstance("12345").WhenInjectedInto<KnobPwdDI>();
 
+            Container.Bind<string>().WithId("testpwd").FromInstance("12345");
         }
     }
 }
