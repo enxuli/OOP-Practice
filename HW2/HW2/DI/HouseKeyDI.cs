@@ -1,18 +1,17 @@
 ﻿using System;
 using Zenject;
-
 namespace HW2.DI
 {
-    public class HouseDI:IHouseDI
+    public class HouseKeyDI : IHouseKeyDI
     {
-        [Inject]
-        protected IDoorDI _door;
+        protected IDoorKeyDI _door;
 
-        public HouseDI()
+        public HouseKeyDI(IDoorKeyDI door)
         {
+            _door = door;
         }
 
-        public IDoorDI Door
+        public IDoorKeyDI Door
         {
             get
             {

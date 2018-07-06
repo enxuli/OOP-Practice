@@ -3,15 +3,11 @@ using Zenject;
 
 namespace HW2.DI
 {
-    public class DoorDI : IDoorDI
+    public class DoorPwdDI : IDoorPwdDI
     {
         protected IKnobDI _knob;
 
-        public DoorDI()
-        {
-        }
-
-        public void InstallKnob(IKnobDI knob)
+        public DoorPwdDI(IKnobDI knob)
         {
             _knob = knob;
         }

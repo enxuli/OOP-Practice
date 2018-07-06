@@ -1,9 +1,8 @@
 ﻿using System;
 namespace HW2.DI
 {
-    public interface IDoorDI
+    public interface IDoorKeyDI
     {
         IKnobDI Knob { get; }
-        void InstallKnob(IKnobDI knob);
     }
 }
