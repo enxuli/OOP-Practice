@@ -42,7 +42,7 @@ namespace HW2.UnitTesting
                 Key = _key,
                 Pwd = "12345"
             };
-            Assert.AreSame(_opener.Pwd, "12345");
+            Assert.AreEqual(_opener.Pwd, "12345");
         }
 
         [Test]
