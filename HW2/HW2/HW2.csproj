@@ -72,6 +72,10 @@
     <Compile Include="DI\IHousePwdDI.cs" />
     <Compile Include="DI\IDoorPwdDI.cs" />
     <Compile Include="DI\DoorKeyDI.cs" />
+    <Compile Include="DI\HouseDI.cs" />
+    <Compile Include="DI\IHouseDI.cs" />
+    <Compile Include="DI\DoorDI.cs" />
+    <Compile Include="DI\IDoorDI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

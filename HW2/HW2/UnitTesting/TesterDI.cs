@@ -15,11 +15,11 @@ namespace HW2.UnitTesting
         [Inject]
         IOpener _opener;
 
-        [Inject]
-        IHouseKeyDI _house;
+        [Inject(Id ="HouseWithKey")]
+        IHouseDI _houseWithKey;
 
-        [Inject]
-        IHousePwdDI _houseNew;
+        [Inject(Id = "HouseWithPwd")]
+        IHouseDI _houseWithPwd;
 
         [Inject]
         IKeyholdDI _keyhold;
@@ -38,34 +38,34 @@ namespace HW2.UnitTesting
         [Test]
         public void CheckHouse()
         {
-            Assert.AreNotSame(_house, _houseNew);
+            Assert.AreNotSame(_houseWithKey, _houseWithPwd);
         }
 
         [Test]
         public void CheckDoor()
         {
-            Assert.AreNotSame(_house.Door, _houseNew.Door);
+            Assert.AreNotSame(_houseWithKey.Door, _houseWithPwd.Door);
         }
 
         [Test]
         public void CheckKnob()
         {
-            Assert.AreNotSame(_house.Door.Knob, _houseNew.Door.Knob);
-            Assert.AreSame(_keyhold, _house.Door.Knob.Keyhold);//there was a bug here
+            Assert.AreNotSame(_houseWithKey.Door.Knob, _houseWithPwd.Door.Knob);
+            Assert.AreSame(_keyhold, _houseWithKey.Door.Knob.Keyhold);//there was a bug here
 
         }
 
         [Test]
         public void CheckKnobPwd()
         {
-            Boolean _isPwdOpened = _houseNew.Door.Knob.Open(_opener); 
+            Boolean _isPwdOpened = _houseWithPwd.Door.Knob.Open(_opener); 
             Assert.True(_isPwdOpened);
         }
 
         [Test]
         public void CheckKnobKey()
         {
-            Boolean _isKeyOpened = _house.Door.Knob.Open(_opener);
+            Boolean _isKeyOpened = _houseWithKey.Door.Knob.Open(_opener);
             Assert.True(_isKeyOpened);
         }
         [Test]

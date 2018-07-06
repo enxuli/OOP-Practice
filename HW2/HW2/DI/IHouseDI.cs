@@ -1,7 +1,7 @@
 ﻿using System;
 namespace HW2.DI
 {
-    public interface IHouseKeyDI
+    public interface IHouseDI
     {
         IDoorDI Door { get; }
     }

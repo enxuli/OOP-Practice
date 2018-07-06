@@ -19,9 +19,14 @@ namespace HW2.UnitTesting
             ContainerBindInterfaceTo<IKeyholdDI, KeyholdDI>(true);
             ContainerBindInterfaceTo<IOpener, Opener>(true);
 
+            Container.Bind<IHouseDI>().WithId("HouseWithKey").To<HouseKeyDI>().AsSingle();
+            Container.Bind<IHouseDI>().WithId("HouseWithPwd").To<HousePwdDI>().AsSingle();
+
+            Container.Bind<IDoorDI>().To<DoorKeyDI>().AsSingle().WhenInjectedInto<HouseKeyDI>();
+            Container.Bind<IDoorDI>().To<DoorPwdDI>().AsSingle().WhenInjectedInto<HousePwdDI>();
+
             Container.Bind<IKnobDI>().To<KnobKeyDI>().AsSingle().WhenInjectedInto<DoorKeyDI>();
             Container.Bind<IKnobDI>().To<KnobPwdDI>().AsSingle().WhenInjectedInto<DoorPwdDI>();
-
 
             Container.Bind<int>().FromInstance(1).WhenInjectedInto<KeyDI>();
             Container.Bind<int>().FromInstance(1).WhenInjectedInto<KeyholdDI>();

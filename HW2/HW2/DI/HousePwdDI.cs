@@ -3,16 +3,16 @@ using Zenject;
 
 namespace HW2.DI
 {
-    public class HousePwdDI : IHousePwdDI
+    public class HousePwdDI : HouseDI, IHousePwdDI
     {
-        protected IDoorPwdDI _door;
+        protected IDoorDI _door;
 
-        public HousePwdDI(IDoorPwdDI door)
+        public HousePwdDI(IDoorDI door)
         {
             _door = door;
         }
 
-        public IDoorPwdDI Door
+        public override IDoorDI Door
         {
             get
             {

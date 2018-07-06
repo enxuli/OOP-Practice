@@ -2,16 +2,16 @@
 using Zenject;
 namespace HW2.DI
 {
-    public class HouseKeyDI : IHouseKeyDI
+    public class HouseKeyDI : HouseDI, IHouseKeyDI
     {
-        protected IDoorKeyDI _door;
+        protected IDoorDI _door;
 
-        public HouseKeyDI(IDoorKeyDI door)
+        public HouseKeyDI(IDoorDI door)
         {
             _door = door;
         }
 
-        public IDoorKeyDI Door
+        public override IDoorDI Door
         {
             get
             {

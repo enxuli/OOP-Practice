@@ -2,7 +2,7 @@
 using Zenject;
 namespace HW2.DI
 {
-    public class DoorKeyDI : IDoorKeyDI
+    public class DoorKeyDI : DoorDI,IDoorKeyDI
     {
         
         protected IKnobDI _knob;
@@ -12,7 +12,7 @@ namespace HW2.DI
             _knob = knob;
         }
 
-        public IKnobDI Knob
+        public override IKnobDI Knob
         {
             get
             {
