@@ -13,10 +13,7 @@ namespace HW2.UnitTesting
         }
 
         [Inject]
-        IKeyDI _key;
-
-        [Inject(Id = "testpwd")]
-        String pwd;
+        IOpener _opener;
 
         [Inject]
         IHouseDI _house;
@@ -25,7 +22,7 @@ namespace HW2.UnitTesting
         IHouseDI _houseNew;
 
 
-        [Inject(Id ="Knob")]
+        [Inject(Id ="KnobWithKey")]
         IKnobDI _knob;
 
         [Inject(Id = "KnobWithPwd")]
@@ -34,11 +31,15 @@ namespace HW2.UnitTesting
         [Inject]
         IKeyholdDI _keyhold;
 
+        [Inject]
+        IKeyDI _key;
+
 
         [Test]
-        public void CheckKey()
+        public void CheckOpenMethod()
         {
-            Assert.AreEqual(_key.Index, 1);
+            Assert.AreEqual(_opener.Key.Index, 1);
+            Assert.AreSame(_opener.Pwd, "12345");
         }
 
         [Test]
@@ -69,10 +70,16 @@ namespace HW2.UnitTesting
         [Test]
         public void CheckKnobPwd()
         {
-            Boolean _isOpened = _knobNew.PwdOpen(pwd); 
-            Assert.True(_isOpened);
+            Boolean _isPwdOpened = _knobNew.Open(_opener); 
+            Assert.True(_isPwdOpened);
         }
 
+        [Test]
+        public void CheckKnobKey()
+        {
+            Boolean _isKeyOpened = _knob.Open(_opener);
+            Assert.True(_isKeyOpened);
+        }
         [Test]
         public void CheckKeyhold()
         {

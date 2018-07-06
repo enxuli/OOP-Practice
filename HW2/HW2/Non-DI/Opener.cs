@@ -1,20 +1,26 @@
 ﻿using System;
 namespace HW2.NonDI
 {
-    public class KnobPwd : Knob
+    public class Opener
     {
+        protected Key _key;
+
         protected string _pwd;
 
-        public KnobPwd()
+        public Opener()
         {
         }
-
-        public override bool Open( Opener opener)
+        public Key Key
         {
-            if (opener.Pwd == _pwd) return true;
-            else return false;
+            get
+            {
+                return _key;
+            }
+            set
+            {
+                _key = value;
+            }
         }
-
         public string Pwd
         {
             get

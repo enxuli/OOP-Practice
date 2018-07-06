@@ -4,7 +4,6 @@ namespace HW2.NonDI
     public class Door
     {
         protected Knob _knob;
-        protected KnobPwd _knobPwd;
 
         public Door()
         {
@@ -15,11 +14,7 @@ namespace HW2.NonDI
             _knob = knob;
 
         }
-        public void IntsallKnob( KnobPwd knobPwd)
-        {
-            _knobPwd = knobPwd;
 
-        }
 
         public Knob Knob
         {
@@ -29,14 +24,5 @@ namespace HW2.NonDI
             }
 
         }
-        public KnobPwd KnobPwd
-        {
-            get
-            {
-                return _knobPwd;
-            }
-
-        }
-
     }
 }

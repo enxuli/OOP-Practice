@@ -1,29 +1,18 @@
 ﻿using System;
-using Zenject;
-
 namespace HW2.DI
 {
     public class KnobDI : IKnobDI
     {
-        [Inject]
-        protected IKeyholdDI _keyhold;
-
         public KnobDI()
         {
         }
-
-        public IKeyholdDI Keyhold
+        public virtual bool Open(IOpener opener)
         {
-            get
-            {
-                return _keyhold;
-            }
-
+            return false;
         }
 
-        public bool PwdOpen(string pwd)
-        {
-            throw new NotImplementedException();
-        }
+        public virtual IKeyholdDI Keyhold
+        { get; }
+
     }
 }

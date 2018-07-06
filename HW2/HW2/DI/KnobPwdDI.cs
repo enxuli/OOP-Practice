@@ -3,7 +3,7 @@ using Zenject;
 
 namespace HW2.DI
 {
-    public class KnobPwdDI : IKnobDI
+    public class KnobPwdDI : KnobDI
     {
         [Inject]
         protected string _pwd;
@@ -13,11 +13,9 @@ namespace HW2.DI
             
         }
 
-        public IKeyholdDI Keyhold => throw new NotImplementedException();
-
-        public Boolean PwdOpen(string pwd)
+        public override bool Open(IOpener opener)
         {
-            if (pwd == _pwd) return true;
+            if (opener.Pwd == _pwd) return true;
             else return false;
                 
         }

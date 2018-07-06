@@ -6,9 +6,9 @@ namespace HW2.UnitTesting
     [TestFixture]
     public class TesterNonDI
     {
-        string _pwd = "12345";
-
         Key _key;
+
+        Opener _opener;
 
         House _house;
 
@@ -18,7 +18,7 @@ namespace HW2.UnitTesting
 
         Door _doorNew;
 
-        Knob _knob;
+        KnobKey _knobKey;
 
         KnobPwd _knobPwd;
 
@@ -33,6 +33,16 @@ namespace HW2.UnitTesting
             };
 
             Assert.AreEqual(_key.Index, 1);
+        }
+
+        public void CheckOpener()
+        {
+            _opener = new Opener
+            {
+                Key = _key,
+                Pwd = "12345"
+            };
+            Assert.AreSame(_opener.Pwd, "12345");
         }
 
         [Test]
@@ -50,16 +60,24 @@ namespace HW2.UnitTesting
         [Test]
         public void CheckKnob()
         {
-            _knob = new Knob();
+            CheckOpener();
+            _knobKey = new KnobKey();
             _knobPwd = new KnobPwd();
-            _door.IntsallKnob(_knob);
-            _door.IntsallKnob(_knobPwd);
-            Assert.AreSame(_knob, _house.Door.Knob);
-            Assert.AreSame(_knobPwd, _house.Door.KnobPwd);
-            _keyholdOnKnod = _knob.InstallKeyhold();
-            Assert.AreSame(_keyholdOnKnod, _house.Door.Knob.Keyhold);
+            _door.IntsallKnob(_knobKey);
+            _doorNew.IntsallKnob(_knobPwd);
 
+            Assert.AreSame(_knobKey, _house.Door.Knob);
+            Assert.AreSame(_knobPwd, _houseNew.Door.Knob);
+
+            _keyholdOnKnod = _knobKey.InstallKeyhold();
+            Assert.AreSame(_keyholdOnKnod, _house.Door.Knob.Keyhold);
             _keyholdOnKnod.Index = 1;
+
+
+
+            Boolean _isKeyOpened = _knobKey.Open(_opener);
+            Assert.True(_isKeyOpened);
+
 
             Boolean _isOpened = _keyholdOnKnod.TurnandOpen(_key);
             Assert.True(_isOpened);
@@ -69,7 +87,7 @@ namespace HW2.UnitTesting
         public void CheckKnobPwd()
         {
             _knobPwd.Pwd = "12345";
-            Boolean _isPwdOpened = _knobPwd.PwdOpen(_pwd);
+            Boolean _isPwdOpened = _knobPwd.Open(_opener);
             Assert.True(_isPwdOpened);
 
         }

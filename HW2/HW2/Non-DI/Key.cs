@@ -1,5 +1,5 @@
 ﻿using System;
-namespace HW2
+namespace HW2.NonDI
 {
     public class Key
     {

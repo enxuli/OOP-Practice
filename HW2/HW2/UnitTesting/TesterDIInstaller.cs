@@ -16,15 +16,15 @@ namespace HW2.UnitTesting
             ContainerBindInterfaceTo<IKeyDI, KeyDI>(true);
             ContainerBindInterfaceTo<IHouseDI, HouseDI>(false);
             ContainerBindInterfaceTo<IKeyholdDI, KeyholdDI>(true);
+            ContainerBindInterfaceTo<IOpener, Opener>(true);
 
-            Container.Bind<IKnobDI>().WithId("Knob").To<KnobDI>().AsTransient();
+            Container.Bind<IKnobDI>().WithId("KnobWithKey").To<KnobKeyDI>().AsTransient();
             Container.Bind<IKnobDI>().WithId("KnobWithPwd").To<KnobPwdDI>().AsTransient();
 
             Container.Bind<int>().FromInstance(1).WhenInjectedInto<KeyDI>();
             Container.Bind<int>().FromInstance(1).WhenInjectedInto<KeyholdDI>();
             Container.Bind<string>().FromInstance("12345").WhenInjectedInto<KnobPwdDI>();
-
-            Container.Bind<string>().WithId("testpwd").FromInstance("12345");
+            Container.Bind<string>().FromInstance("12345").WhenInjectedInto<Opener>();
         }
     }
 }

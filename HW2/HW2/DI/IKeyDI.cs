@@ -1,5 +1,5 @@
 ﻿using System;
-namespace HW2
+namespace HW2.DI
 {
     public interface IKeyDI
     {
