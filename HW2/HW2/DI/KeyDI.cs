@@ -1,6 +1,6 @@
 ﻿using System;
 using Zenject;
-namespace HW2
+namespace HW2.DI
 {
     public class KeyDI : IKeyDI
     {

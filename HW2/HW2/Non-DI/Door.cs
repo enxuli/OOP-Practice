@@ -9,12 +9,13 @@ namespace HW2.NonDI
         {
         }
 
-        public Knob IntsallKnob()
+        public void IntsallKnob ( Knob knob)
         {
-            _knob = new Knob();
+            _knob = knob;
 
-            return _knob;
         }
+
+
         public Knob Knob
         {
             get

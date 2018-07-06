@@ -3,26 +3,16 @@ namespace HW2.NonDI
 {
     public class Knob
     {
-        protected Keyhold _keyhold;
-
         public Knob()
         {
         }
 
-        public Keyhold InstallKeyhold()
+        public virtual bool Open(Opener opener)
         {
-            _keyhold = new Keyhold();
-
-            return _keyhold;
+            return false;
         }
 
-        public Keyhold Keyhold
-        {
-            get
-            {
-                return _keyhold;
-            }
-
-        }
+        public virtual Keyhold Keyhold
+        { get; }
     }
 }

@@ -44,13 +44,12 @@
     <Compile Include="UnitTesting\TesterNonDI.cs" />
     <Compile Include="DI\HouseDI.cs" />
     <Compile Include="DI\DoorDI.cs" />
-    <Compile Include="DI\KnobDI.cs" />
+    <Compile Include="DI\KnobKeyDI.cs" />
     <Compile Include="DI\KeyholdDI.cs" />
     <Compile Include="Non-DI\Door.cs" />
     <Compile Include="Non-DI\Keyhold.cs" />
     <Compile Include="Non-DI\Knob.cs" />
     <Compile Include="Non-DI\House.cs" />
-    <Compile Include="Key.cs" />
     <Compile Include="UnitTesting\TesterDIInstaller.cs" />
     <Compile Include="UnitTesting\TesterDI.cs" />
     <Compile Include="UnitTesting\UnitTestBase.cs" />
@@ -59,8 +58,16 @@
     <Compile Include="DI\IDoorDI.cs" />
     <Compile Include="DI\IKeyholdDI.cs" />
     <Compile Include="DI\IKnobDI.cs" />
-    <Compile Include="IKeyDI.cs" />
-    <Compile Include="KeyDI.cs" />
+    <Compile Include="DI\KnobPwdDI.cs" />
+    <Compile Include="Non-DI\KnobPwd.cs" />
+    <Compile Include="DI\KnobDI.cs" />
+    <Compile Include="DI\IKeyDI.cs" />
+    <Compile Include="DI\KeyDI.cs" />
+    <Compile Include="DI\Opener.cs" />
+    <Compile Include="DI\IOpener.cs" />
+    <Compile Include="Non-DI\KnobKey.cs" />
+    <Compile Include="Non-DI\Key.cs" />
+    <Compile Include="Non-DI\Opener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
